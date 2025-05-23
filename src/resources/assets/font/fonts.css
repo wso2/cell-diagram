@@ -1,0 +1,44 @@
+/**
+ * Copyright (c) 2022, WSO2 LLC. (https://www.wso2.com). All Rights Reserved.
+ *
+ * This software is the property of WSO2 LLC. and its suppliers, if any.
+ * Dissemination of any information or reproduction of any material contained
+ * herein in any form is strictly forbidden, unless permitted by WSO2 expressly.
+ * You may not alter or remove any copyright or other notice from copies of this content.
+ */
+
+@font-face {
+    font-family: 'GilmerRegular';
+    src: url('Gilmer-Regular.eot');
+    src:
+            url('Gilmer-Regular.eot?#iefix') format('embedded-opentype'),
+            url('Gilmer-Regular.woff2') format('woff2'),
+            url('Gilmer-Regular.woff') format('woff'),
+            url('Gilmer-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'GilmerMedium';
+    src: url('Gilmer-Medium.eot');
+    src:
+            url('Gilmer-Medium.eot?#iefix') format('embedded-opentype'),
+            url('Gilmer-Medium.woff2') format('woff2'),
+            url('Gilmer-Medium.woff') format('woff'),
+            url('Gilmer-Medium.ttf') format('truetype');
+    font-weight: 600px;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'GilmerBold';
+    src: url('Gilmer-Bold.eot');
+    src:
+            url('Gilmer-Bold.eot?#iefix') format('embedded-opentype'),
+            url('Gilmer-Bold.woff2') format('woff2'),
+            url('Gilmer-Bold.woff') format('woff'),
+            url('Gilmer-Bold.ttf') format('truetype');
+    font-weight: 700px;
+    font-style: normal;
+}
