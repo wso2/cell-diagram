@@ -1,6 +1,6 @@
 # This workflow will build PRs submitted to the main branch.
 
-name: 👷‍♂️ PR Builder
+name: PR Builder
 
 on:
   pull_request:
@@ -19,33 +19,33 @@ env:
   GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
-  storybook:
-    name: 💅 Storybook
+  build:
+    name: Build
     runs-on: ubuntu-latest
     strategy:
       matrix:
         node-version: [lts/*]
         pnpm-version: [latest]
     steps:
-      - name: ⬇️ Checkout
+      - name: Checkout
         id: checkout
         uses: actions/checkout@v4
 
-      - name: 🥡 Setup pnpm
+      - name: Setup pnpm
         id: setup-pnpm
         uses: pnpm/action-setup@v4
         with:
           version: ${{ matrix.pnpm-version }}
           run_install: false
 
-      - name: 🟢 Setup node
+      - name: Setup node
         id: setup-node
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'pnpm'
 
-      - name: 🧩 Install Dependencies
+      - name: Install Dependencies
         id: install-dependencies
         run: |
           tree -L 1
@@ -53,46 +53,10 @@ jobs:
           pnpm store prune
           pnpm install
 
-      - name: 🏗️ Build Project Project
+      - name: Build Project
         id: build
         run:  pnpm build
 
-      - name: 💅 Build Storybook
+      - name: Build Storybook
         id: build-storybook
-        working-directory: packages/react
-        run:  pnpm build-storybook
-
-  build:
-    name: 🚧 Build
-    needs: [storybook]
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [lts/*]
-        pnpm-version: [latest]
-    steps:
-      - name: ⬇️ Checkout
-        id: checkout
-        uses: actions/checkout@v4
-
-      - name: 🥡 Setup pnpm
-        id: setup-pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: ${{ matrix.pnpm-version }}
-          run_install: false
-
-      - name: 🟢 Setup node
-        id: setup-node
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ matrix.node-version }}
-          cache: 'pnpm'
-
-      - name: 🧩 Install Dependencies
-        id: install-dependencies
-        run: pnpm install
-
-      - name: 🏗️ Build Project
-        id: build
-        run:  pnpm build
+        run: pnpm build-storybook
