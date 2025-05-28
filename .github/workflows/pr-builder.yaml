@@ -45,20 +45,6 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'pnpm'
 
-      - name: 🎈 Get pnpm store directory
-        id: get-pnpm-cache-dir
-        run: |
-          echo "::set-output name=pnpm_cache_dir::$(pnpm store path)"
-
-      - name: 🔆 Cache pnpm modules
-        uses: actions/cache@v3
-        id: pnpm-cache
-        with:
-          path: ${{ steps.get-pnpm-cache-dir.outputs.pnpm_cache_dir }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
-
       - name: 🧩 Install Dependencies
         id: install-dependencies
         run: |
