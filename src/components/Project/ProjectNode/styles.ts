@@ -22,7 +22,7 @@ interface StyleProps {
     hasComponentKind?: boolean;
 }
 
-export const ProjectNode: React.FC<any> = styled.div`
+export const ProjectNode = styled.div<any>`
     color: ${Colors.ON_SURFACE_VARIANT};
     display: flex;
     flex-direction: column;
@@ -43,7 +43,7 @@ interface ProjectNodeStyleProps {
     isSelected?: boolean;
 }
 
-export const ProjectCellNode: React.FC<ProjectNodeStyleProps> = styled.div`
+export const ProjectCellNode = styled.div<ProjectNodeStyleProps>`
     width: ${(props: ProjectNodeStyleProps) => props.height}px;
     height: ${(props: ProjectNodeStyleProps) => props.height}px;
 

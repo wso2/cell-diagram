@@ -37,7 +37,7 @@ export const ConnectionNode = styled.div<StyleProps>`
     }
 `;
 
-export const ConnectionHead: React.FC<any> = styled.div`
+export const ConnectionHead = styled.div<StyleProps>`
     background-color: ${(props: StyleProps) => (props.isSelected ? Colors.SECONDARY_CONTAINER : Colors.SURFACE)};
     border: ${(props: StyleProps) =>
         `${props.borderWidth}px solid ${props.isSelected ? Colors.SECONDARY : props.isFocused ? Colors.SECONDARY : Colors.OUTLINE}`};
@@ -49,7 +49,7 @@ export const ConnectionHead: React.FC<any> = styled.div`
     align-items: center;
 `;
 
-export const ConnectionName: React.FC<any> = styled.span`
+export const ConnectionName = styled.span<StyleProps>`
     font-size: ${LABEL_FONT_SIZE}px;
     white-space: nowrap;
     overflow: hidden;
@@ -60,7 +60,7 @@ export const ConnectionName: React.FC<any> = styled.span`
 interface IconWrapperStyleProps {
     previewMode: boolean;
 }
-export const IconWrapper: React.FC<IconWrapperStyleProps> = styled.div`
+export const IconWrapper = styled.div<IconWrapperStyleProps>`
     height: 32px;
     width: 32px;
     svg {

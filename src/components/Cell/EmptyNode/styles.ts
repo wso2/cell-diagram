@@ -14,7 +14,7 @@ interface StyleProps {
     previewMode: boolean;
 }
 
-export const EmptyNode: React.FC<any> = styled.div`
+export const EmptyNode = styled.div<any>`
     width: ${(props: StyleProps) => props.width}px;
     height: ${(props: StyleProps) => props.width}px;
     border-radius: 50%;

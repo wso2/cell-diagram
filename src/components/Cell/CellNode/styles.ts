@@ -19,7 +19,7 @@ interface StyleProps {
     borderWidth: number;
 }
 
-export const CellNode: React.FC<StyleProps> = styled.div`
+export const CellNode = styled.div<StyleProps>`
     width: ${(props: StyleProps) => props.height}px;
     height: ${(props: StyleProps) => props.height}px;
 
@@ -55,7 +55,7 @@ interface ElementProps {
 }
 
 
-export const Circle: React.FC<ElementProps> = styled.div`
+export const Circle = styled.div<ElementProps>`
     visibility: ${(props: ElementProps) => (props.show ? "unset" : "hidden")};
     width: ${CIRCLE_WIDTH}px;
     height: ${CIRCLE_WIDTH}px;
@@ -68,7 +68,7 @@ export const Circle: React.FC<ElementProps> = styled.div`
     background-color: ${Colors.SURFACE};
 `;
 
-export const Dot: React.FC<any> = styled.div`
+export const Dot = styled.div<any>`
     width: ${DOT_WIDTH}px;
     height: ${DOT_WIDTH}px;
     border-radius: 50%;

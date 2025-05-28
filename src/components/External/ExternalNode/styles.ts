@@ -18,7 +18,7 @@ interface StyleProps {
     height?: number;
 }
 
-export const ExternalNode: React.FC<any> = styled.div`
+export const ExternalNode = styled.div<any>`
     width: ${(props: StyleProps) => props.height}px;
     height: ${(props: StyleProps) => props.height}px;
 `;

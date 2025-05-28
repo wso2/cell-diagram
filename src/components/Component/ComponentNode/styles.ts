@@ -34,7 +34,7 @@ interface ComponentHeadStyleProps {
     borderWidth: number;
     disabled: boolean;
 }
-export const ComponentHead: React.FC<ComponentHeadStyleProps> = styled.div`
+export const ComponentHead = styled.div<ComponentHeadStyleProps>`
     background-color: ${(props: ComponentHeadStyleProps) =>
         !props.disabled && props.isSelected ? Colors.SECONDARY_CONTAINER : Colors.SURFACE};
     border: ${(props: ComponentHeadStyleProps) =>
@@ -76,7 +76,7 @@ export const ComponentKind = styled.div`
 interface ComponentNameStyleProps {
     disabled: boolean;
 }
-export const ComponentName: React.FC<ComponentNameStyleProps> = styled.span`
+export const ComponentName = styled.span<ComponentNameStyleProps>`
     font-size: ${LABEL_FONT_SIZE}px;
     white-space: nowrap;
     overflow: hidden;
@@ -90,7 +90,7 @@ interface IconWrapperStyleProps {
     previewMode: boolean;
     disabled: boolean;
 }
-export const IconWrapper: React.FC<IconWrapperStyleProps> = styled.div`
+export const IconWrapper = styled.div<IconWrapperStyleProps>`
     display: flex;
     justify-content: center;
     align-items: center;
