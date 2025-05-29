@@ -1,10 +1,19 @@
-/**
- * Copyright (c) 2023, WSO2 LLC. (https://www.wso2.com). All Rights Reserved.
+/*
+ * Copyright (c) 2025, WSO2 LLC. (http://www.wso2.com) All Rights Reserved.
  *
- * This software is the property of WSO2 LLC. and its suppliers, if any.
- * Dissemination of any information or reproduction of any material contained
- * herein in any form is strictly forbidden, unless permitted by WSO2 expressly.
- * You may not alter or remove any copyright or other notice from copies of this content.
+ * WSO2 LLC. licenses this file to you under the Apache License,
+ * Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
  */
 
 import styled from "@emotion/styled";
@@ -19,7 +28,7 @@ interface StyleProps {
     borderWidth: number;
 }
 
-export const CellNode: React.FC<StyleProps> = styled.div`
+export const CellNode = styled.div<StyleProps>`
     width: ${(props: StyleProps) => props.height}px;
     height: ${(props: StyleProps) => props.height}px;
 
@@ -55,7 +64,7 @@ interface ElementProps {
 }
 
 
-export const Circle: React.FC<ElementProps> = styled.div`
+export const Circle = styled.div<ElementProps>`
     visibility: ${(props: ElementProps) => (props.show ? "unset" : "hidden")};
     width: ${CIRCLE_WIDTH}px;
     height: ${CIRCLE_WIDTH}px;
@@ -68,7 +77,7 @@ export const Circle: React.FC<ElementProps> = styled.div`
     background-color: ${Colors.SURFACE};
 `;
 
-export const Dot: React.FC<any> = styled.div`
+export const Dot = styled.div<any>`
     width: ${DOT_WIDTH}px;
     height: ${DOT_WIDTH}px;
     border-radius: 50%;

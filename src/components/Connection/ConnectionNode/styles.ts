@@ -1,10 +1,19 @@
-/**
- * Copyright (c) 2023, WSO2 LLC. (https://www.wso2.com). All Rights Reserved.
+/*
+ * Copyright (c) 2025, WSO2 LLC. (http://www.wso2.com) All Rights Reserved.
  *
- * This software is the property of WSO2 LLC. and its suppliers, if any.
- * Dissemination of any information or reproduction of any material contained
- * herein in any form is strictly forbidden, unless permitted by WSO2 expressly.
- * You may not alter or remove any copyright or other notice from copies of this content.
+ * WSO2 LLC. licenses this file to you under the Apache License,
+ * Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
  */
 
 import styled from "@emotion/styled";
@@ -37,7 +46,7 @@ export const ConnectionNode = styled.div<StyleProps>`
     }
 `;
 
-export const ConnectionHead: React.FC<any> = styled.div`
+export const ConnectionHead = styled.div<StyleProps>`
     background-color: ${(props: StyleProps) => (props.isSelected ? Colors.SECONDARY_CONTAINER : Colors.SURFACE)};
     border: ${(props: StyleProps) =>
         `${props.borderWidth}px solid ${props.isSelected ? Colors.SECONDARY : props.isFocused ? Colors.SECONDARY : Colors.OUTLINE}`};
@@ -49,7 +58,7 @@ export const ConnectionHead: React.FC<any> = styled.div`
     align-items: center;
 `;
 
-export const ConnectionName: React.FC<any> = styled.span`
+export const ConnectionName = styled.span<StyleProps>`
     font-size: ${LABEL_FONT_SIZE}px;
     white-space: nowrap;
     overflow: hidden;
@@ -60,7 +69,7 @@ export const ConnectionName: React.FC<any> = styled.span`
 interface IconWrapperStyleProps {
     previewMode: boolean;
 }
-export const IconWrapper: React.FC<IconWrapperStyleProps> = styled.div`
+export const IconWrapper = styled.div<IconWrapperStyleProps>`
     height: 32px;
     width: 32px;
     svg {
