@@ -15,7 +15,8 @@
     "deploy": "npm publish",
     "storybook": "start-storybook -p 6006",
     "postbuild": "copyfiles -u 1 -V build/*.js build/fonts/* build/images/* -e build/*.txt ../choreo-extension/resources/jslibs",
-    "build-storybook": "build-storybook -o .out"
+    "build-storybook": "build-storybook -o .out",
+    "ci:publish": "pnpm publish -r"
   },
   "keywords": [],
   "dependencies": {
