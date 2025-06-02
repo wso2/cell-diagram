@@ -1,6 +1,6 @@
 {
   "name": "@wso2/cell-diagram",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Generate the diagram based on the cell architecture.",
   "files": [
     "lib"
@@ -18,7 +18,9 @@
     "build-storybook": "build-storybook -o .out",
     "ci:publish-no-git-checks": "pnpm publish -r --no-git-checks"
   },
-  "keywords": ["cell-architecture"],
+  "keywords": [
+    "cell-architecture"
+  ],
   "dependencies": {
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.10.5",
