@@ -4,4 +4,10 @@
 
 ### Minor Changes
 
+- ed50cff: pre-release
+
+## 0.1.0
+
+### Minor Changes
+
 - c96259a: pre-release
