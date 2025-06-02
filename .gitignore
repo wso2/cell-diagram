@@ -50,7 +50,7 @@ node_modules/
 *.tsbuildinfo
 
 lib/
-build
+/build
 
 # Playwright
 playwright-report/
