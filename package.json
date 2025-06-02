@@ -1,6 +1,6 @@
 {
   "name": "@wso2/cell-diagram",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Generate the diagram based on the cell architecture.",
   "files": [
     "lib"
