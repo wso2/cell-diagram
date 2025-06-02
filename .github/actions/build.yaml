@@ -1,0 +1,43 @@
+name: 'Build Project'
+description: 'Builds the project and storybook using pnpm'
+
+inputs:
+  node-version:
+    description: 'Node.js version to use'
+    required: true
+    default: '20.x'
+  pnpm-version:
+    description: 'pnpm version to use'
+    required: true
+    default: '10.x'
+
+runs:
+  using: "composite"
+  steps:
+    - name: Setup pnpm
+      uses: pnpm/action-setup@v4
+      with:
+        version: ${{ inputs.pnpm-version }}
+        run_install: false
+
+    - name: Setup node
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ inputs.node-version }}
+        cache: 'pnpm'
+
+    - name: Install Dependencies
+      shell: bash
+      run: |
+        tree -L 1
+        ls -l pnpm-lock.yaml
+        pnpm store prune
+        pnpm install
+
+    - name: Build Project
+      shell: bash
+      run: pnpm build
+
+    - name: Build Storybook
+      shell: bash
+      run: pnpm build-storybook
