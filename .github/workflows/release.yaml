@@ -44,7 +44,7 @@ jobs:
         with:
           commit: "chore(release): ${{ env.NEXT_VERSION }}"
           title:  "chore(release): ${{ env.NEXT_VERSION }}"
-          publish: pnpm ci:publish
+          publish: pnpm ci:publish-no-git-checks # Due to the previous step generating a release.json
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
