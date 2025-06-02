@@ -27,32 +27,25 @@ jobs:
       - name: Checkout code repository
         uses: actions/checkout@v4
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: ${{ matrix.pnpm-version }}
-          run_install: false
-
-      - name: Setup node.js
-        uses: actions/setup-node@v4
+      - name: Build Project
+        uses: ./.github/actions/build.yaml
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'pnpm'
+          pnpm-version: ${{ matrix.pnpm-version }}
       
-      - name: Install dependencies
-        run: pnpm install
-      
-      - name: Build
-        id: build
-        run:  pnpm build
-      
+      - name: next version
+        id: next
+        run: |
+          npx changeset status --output=release.json
+          echo "NEXT_VERSION=$(jq -r '.releases[0].newVersion' release.json)" >> "$GITHUB_ENV"
+
       - name: Create and publish versions
         uses: changesets/action@v1
         with:
-          commit: "chore: update versions"
-          title: "chore: update versions"
+          commit: "chore(release): ${{ env.NEXT_VERSION }}"
+          title:  "chore(release): ${{ env.NEXT_VERSION }}"
           publish: pnpm ci:publish
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-      
+       
