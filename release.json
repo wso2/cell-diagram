@@ -1,0 +1,25 @@
+{
+  "changesets": [
+    {
+      "releases": [
+        {
+          "name": "@wso2/cell-diagram",
+          "type": "minor"
+        }
+      ],
+      "summary": "pre-release",
+      "id": "big-crabs-drive"
+    }
+  ],
+  "releases": [
+    {
+      "name": "@wso2/cell-diagram",
+      "type": "minor",
+      "oldVersion": "0.0.0",
+      "changesets": [
+        "big-crabs-drive"
+      ],
+      "newVersion": "0.1.0"
+    }
+  ]
+}
