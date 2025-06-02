@@ -28,11 +28,7 @@ runs:
 
     - name: Install Dependencies
       shell: bash
-      run: |
-        tree -L 1
-        ls -l pnpm-lock.yaml
-        pnpm store prune
-        pnpm install
+      run: pnpm install
 
     - name: Build Project
       shell: bash
