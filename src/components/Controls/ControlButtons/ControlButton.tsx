@@ -18,8 +18,7 @@
 
 import React, { ReactNode } from "react";
 import Tooltip from "@mui/material/Tooltip";
-import IconButton from "@mui/material/IconButton";
-import { useStyles } from "./style";
+import { ControlIconButton } from "./style";
 
 interface ControlButtonProps {
     children: ReactNode;
@@ -30,7 +29,6 @@ interface ControlButtonProps {
 
 export function CanvasControlButton(props: ControlButtonProps) {
     const { children, onClick, tooltipTitle, tooltipPlacement = "left-end" } = props;
-    const styles = useStyles();
 
     return (
         <Tooltip
@@ -58,8 +56,7 @@ export function CanvasControlButton(props: ControlButtonProps) {
                 ],
             }}
         >
-            <IconButton
-                className={styles.controlButton}
+            <ControlIconButton
                 size="small"
                 onClick={onClick}
                 sx={{
@@ -67,7 +64,7 @@ export function CanvasControlButton(props: ControlButtonProps) {
                 }}
             >
                 {children}
-            </IconButton>
+            </ControlIconButton>
         </Tooltip>
     );
 }

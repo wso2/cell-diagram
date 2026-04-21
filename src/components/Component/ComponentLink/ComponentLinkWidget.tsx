@@ -16,10 +16,10 @@
  * under the License.
  */
 
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useMemo, useState } from "react";
 import { DiagramEngine } from "@projectstorm/react-diagrams";
 import { ComponentLinkModel } from "./ComponentLinkModel";
-import { COMPONENT_LINK, Colors, LINK_WIDTH, WarningIcon } from "../../../resources";
+import { COMPONENT_LINK, LINK_WIDTH, WarningIcon } from "../../../resources";
 import { ObservationLabel } from "../../ObservationLabel/ObservationLabel";
 import { TooltipLabel } from "../../TooltipLabel/TooltipLabel";
 import { DiagramContext } from "../../DiagramContext/DiagramContext";
@@ -27,36 +27,44 @@ import { DiagramLayer } from "../../../types";
 import { SharedLink } from "../../SharedLink/SharedLink";
 import Popper from "@mui/material/Popper";
 import Box from "@mui/material/Box";
+import { useColors } from "../../../theme";
 
 interface WidgetProps {
     engine: DiagramEngine;
     link: ComponentLinkModel;
 }
 
-const tooltipPopOverStyle = {
-    backgroundColor: Colors.SURFACE,
-    border: `1px solid ${Colors.SECONDARY}`,
-    padding: "10px",
-    borderRadius: "5px",
-    display: "flex",
-    flexDirection: "column",
-    maxWidth: "280px",
-    gap: "8px",
-    pointerEvents: "none",
-};
-
-const observabilityPopOverStyle = {
-    backgroundColor: Colors.SURFACE,
-    border: `1px solid ${Colors.SECONDARY}`,
-    padding: "10px",
-    borderRadius: "5px",
-    display: "flex",
-    flexDirection: "column",
-    pointerEvents: "none",
-};
-
 export function ComponentLinkWidget(props: WidgetProps) {
     const { link } = props;
+    const colors = useColors();
+
+    const tooltipPopOverStyle = useMemo(
+        () => ({
+            backgroundColor: colors.SURFACE,
+            border: `1px solid ${colors.SECONDARY}`,
+            padding: "10px",
+            borderRadius: "5px",
+            display: "flex",
+            flexDirection: "column" as const,
+            maxWidth: "280px",
+            gap: "8px",
+            pointerEvents: "none" as const,
+        }),
+        [colors],
+    );
+
+    const observabilityPopOverStyle = useMemo(
+        () => ({
+            backgroundColor: colors.SURFACE,
+            border: `1px solid ${colors.SECONDARY}`,
+            padding: "10px",
+            borderRadius: "5px",
+            display: "flex",
+            flexDirection: "column" as const,
+            pointerEvents: "none" as const,
+        }),
+        [colors],
+    );
 
     const {
         diagramLayers: { hasLayer },
@@ -139,19 +147,19 @@ export function ComponentLinkWidget(props: WidgetProps) {
 
     const strokeColor = () => {
         if (isSelected && (hasArchitectureLayer || hasDiffLayer)) {
-            return Colors.SECONDARY;
+            return colors.SECONDARY;
         }
         if (hasDiffLayer && link.observationOnly) {
-            return Colors.ERROR;
+            return colors.ERROR;
         }
         if (hasObservabilityLayer && link.observations?.length > 0) {
-            return Colors.PRIMARY;
+            return colors.PRIMARY;
         }
         if (hideLink) {
             return "transparent";
         }
 
-        return Colors.ON_SURFACE_VARIANT;
+        return colors.ON_SURFACE_VARIANT;
     };
 
     const strokeDash = () => {

@@ -18,13 +18,12 @@
 
 import React from "react";
 import styled from "@emotion/styled";
-import { Colors } from "../../resources";
 
 interface HeaderProps {}
 
 const HeaderContainer = styled.div`
     align-items: center;
-    color: ${Colors.ON_SURFACE_VARIANT};
+    color: ${({ theme }) => theme.colors.ON_SURFACE_VARIANT};
     display: flex;
     flex-direction: row;
     font-family: GilmerBold;

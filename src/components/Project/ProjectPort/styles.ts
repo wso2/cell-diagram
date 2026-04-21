@@ -16,7 +16,6 @@
  * under the License.
  */
 
-import { Colors } from "../../../resources";
 import styled from "@emotion/styled";
 
 interface PortNodeStyleProps {
@@ -29,9 +28,10 @@ export const PortNode = styled.div<PortNodeStyleProps>`
   align-items: center;
   height: 10px;
   width: 10px;
-  background-color: ${(props: PortNodeStyleProps) =>
-    props.isSelected ? Colors.SECONDARY_CONTAINER : Colors.SURFACE_DIM};
-  border: 2px solid ${(props: PortNodeStyleProps) => (props.isSelected ? Colors.OUTLINE_VARIANT : Colors.OUTLINE)};
+  background-color: ${({ theme, isSelected }) =>
+    isSelected ? theme.colors.SECONDARY_CONTAINER : theme.colors.SURFACE_DIM};
+  border: 2px solid ${({ theme, isSelected }) =>
+    isSelected ? theme.colors.OUTLINE_VARIANT : theme.colors.OUTLINE};
   border-radius: 50%;
   margin: -6px 0;
 `;

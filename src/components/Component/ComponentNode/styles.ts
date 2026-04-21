@@ -17,13 +17,13 @@
  */
 
 import styled from "@emotion/styled";
-import { COMPONENT_CIRCLE_WIDTH, Colors, ICON_SCALE, LABEL_FONT_SIZE, LABEL_MAX_WIDTH } from "../../../resources";
+import { COMPONENT_CIRCLE_WIDTH, ICON_SCALE, LABEL_FONT_SIZE, LABEL_MAX_WIDTH } from "../../../resources";
 
 interface ComponentNodeStyleProps {
     previewMode: boolean;
 }
 export const ComponentNode = styled.div<ComponentNodeStyleProps>`
-    color: ${Colors.ON_SURFACE_VARIANT};
+    color: ${({ theme }) => theme.colors.ON_SURFACE_VARIANT};
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -44,11 +44,11 @@ interface ComponentHeadStyleProps {
     disabled: boolean;
 }
 export const ComponentHead = styled.div<ComponentHeadStyleProps>`
-    background-color: ${(props: ComponentHeadStyleProps) =>
-        !props.disabled && props.isSelected ? Colors.SECONDARY_CONTAINER : Colors.SURFACE};
-    border: ${(props: ComponentHeadStyleProps) =>
-        `${props.borderWidth}px solid ${
-            props.disabled ? Colors.SURFACE_DIM : props.isSelected ? Colors.SECONDARY : Colors.PRIMARY
+    background-color: ${({ theme, disabled, isSelected }) =>
+        !disabled && isSelected ? theme.colors.SECONDARY_CONTAINER : theme.colors.SURFACE};
+    border: ${({ theme, borderWidth, disabled, isSelected }) =>
+        `${borderWidth}px solid ${
+            disabled ? theme.colors.SURFACE_DIM : isSelected ? theme.colors.SECONDARY : theme.colors.PRIMARY
         }`};
     border-radius: 50%;
     height: ${COMPONENT_CIRCLE_WIDTH}px;
@@ -64,7 +64,7 @@ export const ComponentHead = styled.div<ComponentHeadStyleProps>`
 `;
 
 export const ComponentKind = styled.div`
-    background-color: ${Colors.SURFACE};
+    background-color: ${({ theme }) => theme.colors.SURFACE};
     border-radius: 50%;
 
     height: ${COMPONENT_CIRCLE_WIDTH / 3}px;
@@ -92,7 +92,7 @@ export const ComponentName = styled.span<ComponentNameStyleProps>`
     text-overflow: ellipsis;
     text-align: center;
     max-width: ${LABEL_MAX_WIDTH}px;
-    color: ${(props: IconWrapperStyleProps) => (props.disabled ? Colors.SURFACE_DIM : Colors.OUTLINE)};
+    color: ${({ theme, disabled }) => (disabled ? theme.colors.SURFACE_DIM : theme.colors.OUTLINE)};
 `;
 
 interface IconWrapperStyleProps {
@@ -106,14 +106,14 @@ export const IconWrapper = styled.div<IconWrapperStyleProps>`
     height: 100%;
     width: 100%;
 
-    color: ${(props: IconWrapperStyleProps) => (props.disabled ? Colors.SURFACE_DIM : Colors.PRIMARY)};
+    color: ${({ theme, disabled }) => (disabled ? theme.colors.SURFACE_DIM : theme.colors.PRIMARY)};
     font-size: 32px;
 
     svg {
-        fill: ${(props: IconWrapperStyleProps) => (props.disabled ? Colors.SURFACE_DIM : Colors.PRIMARY)};
+        fill: ${({ theme, disabled }) => (disabled ? theme.colors.SURFACE_DIM : theme.colors.PRIMARY)};
         height: 32px;
         width: 32px;
-        transform: ${(props: IconWrapperStyleProps) => (props.previewMode ? `scale(${ICON_SCALE.PREVIEW})` : "none")};
+        transform: ${({ previewMode }) => (previewMode ? `scale(${ICON_SCALE.PREVIEW})` : "none")};
     }
 `;
 

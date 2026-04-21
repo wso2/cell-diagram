@@ -35,9 +35,9 @@ const Container = styled.div`
 	justify-content: center;
 	height: 100%;
 	width: 100%;
-	background-image: radial-gradient(${Colors.SURFACE_CONTAINER} 10%, transparent 0px);
+	background-image: radial-gradient(${({ theme }) => theme.colors.SURFACE_CONTAINER} 10%, transparent 0px);
     background-size: 16px 16px;
-    background-color: ${Colors.SURFACE_BRIGHT};
+    background-color: ${({ theme }) => theme.colors.SURFACE_BRIGHT};
 `;
 
 export class OverlayLayerWidget extends React.Component<NodeLayerWidgetProps> {

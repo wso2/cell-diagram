@@ -17,7 +17,7 @@
  */
 
 import styled from "@emotion/styled";
-import { CIRCLE_WIDTH, Colors, DOT_WIDTH, CELL_LINE_MIN_WIDTH } from "../../../resources";
+import { CIRCLE_WIDTH, DOT_WIDTH, CELL_LINE_MIN_WIDTH } from "../../../resources";
 
 interface StyleProps {
     isSelected?: boolean;
@@ -52,7 +52,7 @@ export const CellNode = styled.div<StyleProps>`
     }
 
     #mainCell path {
-        stroke: ${Colors.OUTLINE};
+        stroke: ${({ theme }) => theme.colors.OUTLINE};
         stroke-width: ${(props: StyleProps) => props.borderWidth};
         fill: none;
         pointer-events: none;
@@ -69,24 +69,24 @@ export const Circle = styled.div<ElementProps>`
     width: ${CIRCLE_WIDTH}px;
     height: ${CIRCLE_WIDTH}px;
     border-radius: 50%;
-    border: ${CELL_LINE_MIN_WIDTH}px solid ${Colors.OUTLINE};
+    border: ${CELL_LINE_MIN_WIDTH}px solid ${({ theme }) => theme.colors.OUTLINE};
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: ${Colors.SURFACE};
+    background-color: ${({ theme }) => theme.colors.SURFACE};
 `;
 
 export const Dot = styled.div<any>`
     width: ${DOT_WIDTH}px;
     height: ${DOT_WIDTH}px;
     border-radius: 50%;
-    border: ${CELL_LINE_MIN_WIDTH}px solid ${Colors.OUTLINE};
+    border: ${CELL_LINE_MIN_WIDTH}px solid ${({ theme }) => theme.colors.OUTLINE};
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: ${Colors.SURFACE_DIM};
+    background-color: ${({ theme }) => theme.colors.SURFACE_DIM};
 `;
 
 export const TopPortCircle: React.FC<any> = styled(Circle)`
@@ -141,7 +141,7 @@ export const PortLabel: React.FC<any> = styled.div`
     flex-direction: column;
     align-items: flex-start;
     font-family: "GilmerMedium";
-    color: ${Colors.OUTLINE};
+    color: ${({ theme }) => theme.colors.OUTLINE};
     font-size: 20px;
     span {
         text-align: left;
@@ -180,14 +180,14 @@ export const BottomPortLabel: React.FC<any> = styled(PortLabel)`
 export const IconWrapper: React.FC<any> = styled.div`
     height: 32px;
     width: 32px;
-    color: ${Colors.OUTLINE};
+    color: ${({ theme }) => theme.colors.OUTLINE};
     font-size: 28px;
 `;
 
 export const TopIconWrapper: React.FC<any> = styled.div`
     height: 32px;
     width: 32px;
-    color: ${Colors.OUTLINE};
+    color: ${({ theme }) => theme.colors.OUTLINE};
     font-size: 28px;
     transform: rotate(90deg);
 `;

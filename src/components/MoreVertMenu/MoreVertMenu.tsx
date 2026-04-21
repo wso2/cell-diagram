@@ -21,13 +21,12 @@ import styled from "@emotion/styled";
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
-import { Colors } from "../../resources";
 import { Component } from "../../types";
 import { MoreVertMenuItem } from "../../types";
 
 const IconStyles = styled.button`
     position: absolute;
-    background-color: ${Colors.SURFACE};
+    background-color: ${({ theme }) => theme.colors.SURFACE};
     margin-left: 68px;
     margin-bottom: 58px;
     width: 28px;
@@ -38,7 +37,7 @@ const IconStyles = styled.button`
     justify-content: center;
     align-items: center;
     line-height: 0;
-    border: 3px solid ${Colors.SURFACE_DIM};
+    border: 3px solid ${({ theme }) => theme.colors.SURFACE_DIM};
     transition: "transform 0.3s ease-in-out";
     cursor: pointer;
 `;

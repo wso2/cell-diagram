@@ -20,7 +20,7 @@ import React, { useEffect, useRef, useState } from "react";
 import styled from "@emotion/styled";
 import gsap from "gsap";
 import { useDiagramContext } from "../DiagramContext/DiagramContext";
-import { Colors, DiagramIcon, DiffIcon, LayersIcon, ObservationIcon } from "../../resources";
+import { DiagramIcon, DiffIcon, LayersIcon, ObservationIcon } from "../../resources";
 import { DiagramLayer, DiagramLayerTooltips } from "../../types";
 import { CanvasControlButton } from "./ControlButtons/ControlButton";
 import { LayerButton } from "./LayerButton";
@@ -43,17 +43,18 @@ export const LayersPanel: React.FC<any> = styled.div`
     align-items: center;
     gap: 8px;
     padding: 6px 6px 4px;
-    background-color: ${Colors.SURFACE_BRIGHT};
-    border: 1px solid ${Colors.SURFACE_DIM};
+    background-color: ${({ theme }) => theme.colors.SURFACE_BRIGHT};
+    border: 1px solid ${({ theme }) => theme.colors.SURFACE_DIM};
 `;
 
 export const MainButton: React.FC<any> = styled.div`
-    border: 1px solid ${Colors.SURFACE_DIM};
+    border: 1px solid ${({ theme }) => theme.colors.SURFACE_DIM};
     width: 34px;
     height: 34px;
     border-radius: 2px;
-    color: ${(props) => (props.selected ? Colors.PRIMARY : Colors.OUTLINE_VARIANT)};
-    background-color: ${Colors.SURFACE_BRIGHT};
+    color: ${({ theme, selected }: { theme: any; selected?: boolean }) =>
+        selected ? theme.colors.PRIMARY : theme.colors.OUTLINE_VARIANT};
+    background-color: ${({ theme }) => theme.colors.SURFACE_BRIGHT};
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -62,7 +63,7 @@ export const MainButton: React.FC<any> = styled.div`
     padding: 5px;
     cursor: pointer;
     &:active {
-        background-color: ${Colors.SURFACE_DIM};
+        background-color: ${({ theme }) => theme.colors.SURFACE_DIM};
     }
 `;
 
