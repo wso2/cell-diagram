@@ -17,9 +17,7 @@
  */
 
 import styled from "@emotion/styled";
-import { Colors, LABEL_FONT_SIZE, LABEL_MAX_WIDTH } from "../../../resources";
-
-const PRIMARY_HOVER: string = "#2c09ed";
+import { LABEL_FONT_SIZE, LABEL_MAX_WIDTH } from "../../../resources";
 
 interface StyleProps {
     isAnonymous: boolean;
@@ -32,7 +30,7 @@ interface StyleProps {
 }
 
 export const ProjectNode = styled.div<any>`
-    color: ${Colors.ON_SURFACE_VARIANT};
+    color: ${({ theme }) => theme.colors.ON_SURFACE_VARIANT};
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -76,10 +74,10 @@ export const ProjectCellNode = styled.div<ProjectNodeStyleProps>`
     }
 
     #mainCell path {
-        stroke: ${(props: ProjectNodeStyleProps) => (props.isSelected ? Colors.SECONDARY : Colors.ON_SURFACE)};
+        stroke: ${({ theme, isSelected }) => (isSelected ? theme.colors.SECONDARY : theme.colors.ON_SURFACE)};
         stroke-width: ${(props: ProjectNodeStyleProps) => props.borderWidth};
-        fill: ${(props: ProjectNodeStyleProps) =>
-            props.isSelected ? Colors.SECONDARY_CONTAINER : Colors.SURFACE};
+        fill: ${({ theme, isSelected }) =>
+            isSelected ? theme.colors.SECONDARY_CONTAINER : theme.colors.SURFACE};
         pointer-events: none;
     }
 `;
@@ -92,7 +90,8 @@ export const ProjectName: React.FC<any> = styled.span`
     text-align: center;
     /* max-width: ${LABEL_MAX_WIDTH}px; */
     &:hover {
-        color: ${(props: StyleProps) => (props.isClickable ? PRIMARY_HOVER : ``)};
+        color: ${({ theme, isClickable }: { theme: any; isClickable?: boolean }) =>
+            isClickable ? theme.colors.PRIMARY_HOVER : ``};
         text-decoration: ${(props: StyleProps) => (props.isClickable ? `underline` : ``)};
     }
 `;

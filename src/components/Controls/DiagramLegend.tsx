@@ -19,9 +19,9 @@
 import React, { useContext, useEffect, useRef } from "react";
 import styled from "@emotion/styled";
 import gsap from "gsap";
-import { Colors } from "../../resources";
 import { DiagramContext } from "../DiagramContext/DiagramContext";
 import { DiagramLayer } from "../../types";
+import { useColors } from "../../theme";
 
 export const DiagramLegendPanel: React.FC<any> = styled.div`
     position: absolute;
@@ -36,8 +36,8 @@ export const DiagramLegendPanel: React.FC<any> = styled.div`
 
     padding: 8px;
 
-    background-color: ${Colors.SURFACE};
-    border: 1px solid ${Colors.SURFACE_DIM};
+    background-color: ${({ theme }) => theme.colors.SURFACE};
+    border: 1px solid ${({ theme }) => theme.colors.SURFACE_DIM};
 `;
 
 export const LegendRow: React.FC<any> = styled.div`
@@ -50,7 +50,7 @@ export const LegendRow: React.FC<any> = styled.div`
 export const Text: React.FC<any> = styled.div`
     font-size: 12px;
     user-select: none;
-    color: ${Colors.ON_SURFACE_VARIANT};
+    color: ${({ theme }) => theme.colors.ON_SURFACE_VARIANT};
 `;
 
 interface DiagramLegendProps {
@@ -59,6 +59,10 @@ interface DiagramLegendProps {
 
 export function DiagramLegend(props: DiagramLegendProps) {
     const { animation = true } = props;
+    const colors = useColors();
+    // The "hsl(0, 0%, 30%)" stroke on the legend's svg <g> is a backdrop
+    // line that gets overdrawn by the actual stroke color below; we leave
+    // it as-is to preserve the original visual.
 
     const {
         diagramLayers: { hasLayer },
@@ -96,7 +100,7 @@ export function DiagramLegend(props: DiagramLegendProps) {
                                 x2="200"
                                 y2="25"
                                 markerEnd={hasObservabilityLayer ? "" : "url(#solidLinkArrow)"}
-                                stroke={hasObservabilityLayer ? Colors.PRIMARY : Colors.ON_SURFACE_VARIANT}
+                                stroke={hasObservabilityLayer ? colors.PRIMARY : colors.ON_SURFACE_VARIANT}
                             ></line>
                         </g>
                         <defs>
@@ -110,7 +114,7 @@ export function DiagramLegend(props: DiagramLegendProps) {
                                 viewBox="0 0 6 6"
                                 orient="auto"
                             >
-                                <polygon points="0,6 0,0 5,3" fill={hasObservabilityLayer ? Colors.PRIMARY : Colors.ON_SURFACE_VARIANT}></polygon>
+                                <polygon points="0,6 0,0 5,3" fill={hasObservabilityLayer ? colors.PRIMARY : colors.ON_SURFACE_VARIANT}></polygon>
                             </marker>
                         </defs>
                     </svg>
@@ -129,7 +133,7 @@ export function DiagramLegend(props: DiagramLegendProps) {
                                 x2="200"
                                 y2="25"
                                 markerEnd={hasObservabilityLayer ? "" : "url(#solidLinkArrow)"}
-                                stroke={Colors.ON_SURFACE_VARIANT}
+                                stroke={colors.ON_SURFACE_VARIANT}
                             ></line>
                         </g>
                         <defs>
@@ -143,7 +147,7 @@ export function DiagramLegend(props: DiagramLegendProps) {
                                 viewBox="0 0 6 6"
                                 orient="auto"
                             >
-                                <polygon points="0,6 0,0 5,3" fill={Colors.ON_SURFACE_VARIANT}></polygon>
+                                <polygon points="0,6 0,0 5,3" fill={colors.ON_SURFACE_VARIANT}></polygon>
                             </marker>
                         </defs>
                     </svg>
@@ -154,7 +158,7 @@ export function DiagramLegend(props: DiagramLegendProps) {
                 <LegendRow>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 50" width={50} height={10}>
                         <g strokeWidth={10} stroke="hsl(0, 0%, 30%)" fill="none">
-                            <line x1={0} y1={25} x2={200} y2={25} markerEnd={hasObservabilityLayer ? "" : "url(#redLinkArrow)"} stroke={Colors.ERROR}></line>
+                            <line x1={0} y1={25} x2={200} y2={25} markerEnd={hasObservabilityLayer ? "" : "url(#redLinkArrow)"} stroke={colors.ERROR}></line>
                         </g>
                         <defs>
                             <marker
@@ -167,7 +171,7 @@ export function DiagramLegend(props: DiagramLegendProps) {
                                 viewBox="0 0 6 6"
                                 orient="auto"
                             >
-                                <polygon points="0,6 0,0 5,3" fill={Colors.ERROR}></polygon>
+                                <polygon points="0,6 0,0 5,3" fill={colors.ERROR}></polygon>
                             </marker>
                         </defs>
                     </svg>
@@ -198,7 +202,7 @@ export function DiagramLegend(props: DiagramLegendProps) {
                                 viewBox="0 0 6 6"
                                 orient="auto"
                             >
-                                <polygon points="0,6 0,0 5,3" fill={Colors.ON_SURFACE_VARIANT}></polygon>
+                                <polygon points="0,6 0,0 5,3" fill={colors.ON_SURFACE_VARIANT}></polygon>
                             </marker>
                         </defs>
                     </svg>

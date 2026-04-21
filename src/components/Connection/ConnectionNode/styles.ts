@@ -17,7 +17,7 @@
  */
 
 import styled from "@emotion/styled";
-import { CIRCLE_WIDTH, Colors, ICON_SCALE, LABEL_FONT_SIZE, LABEL_MAX_WIDTH } from "../../../resources";
+import { CIRCLE_WIDTH, ICON_SCALE, LABEL_FONT_SIZE, LABEL_MAX_WIDTH } from "../../../resources";
 import { Orientation } from "./ConnectionModel";
 
 interface StyleProps {
@@ -32,7 +32,7 @@ interface StyleProps {
 }
 
 export const ConnectionNode = styled.div<StyleProps>`
-    color: ${Colors.ON_SURFACE_VARIANT};
+    color: ${({ theme }) => theme.colors.ON_SURFACE_VARIANT};
     display: flex;
     flex-direction: ${(props: StyleProps) => (props.orientation === Orientation.VERTICAL ? "column" : "row")};
     align-items: center;
@@ -47,9 +47,12 @@ export const ConnectionNode = styled.div<StyleProps>`
 `;
 
 export const ConnectionHead = styled.div<StyleProps>`
-    background-color: ${(props: StyleProps) => (props.isSelected ? Colors.SECONDARY_CONTAINER : Colors.SURFACE)};
-    border: ${(props: StyleProps) =>
-        `${props.borderWidth}px solid ${props.isSelected ? Colors.SECONDARY : props.isFocused ? Colors.SECONDARY : Colors.OUTLINE}`};
+    background-color: ${({ theme, isSelected }) =>
+        isSelected ? theme.colors.SECONDARY_CONTAINER : theme.colors.SURFACE};
+    border: ${({ theme, borderWidth, isSelected, isFocused }) =>
+        `${borderWidth}px solid ${
+            isSelected ? theme.colors.SECONDARY : isFocused ? theme.colors.SECONDARY : theme.colors.OUTLINE
+        }`};
     border-radius: 50%;
     height: ${CIRCLE_WIDTH}px;
     width: ${CIRCLE_WIDTH}px;
@@ -68,12 +71,13 @@ export const ConnectionName = styled.span<StyleProps>`
 
 interface IconWrapperStyleProps {
     previewMode: boolean;
+    isSelected?: boolean;
 }
 export const IconWrapper = styled.div<IconWrapperStyleProps>`
     height: 32px;
     width: 32px;
     svg {
-        fill: ${(props: StyleProps) => (props.isSelected ? Colors.SECONDARY : Colors.OUTLINE)};
-        transform: ${(props: IconWrapperStyleProps) => (props.previewMode ? `scale(${ICON_SCALE.PREVIEW})` : "none")};
+        fill: ${({ theme, isSelected }) => (isSelected ? theme.colors.SECONDARY : theme.colors.OUTLINE)};
+        transform: ${({ previewMode }) => (previewMode ? `scale(${ICON_SCALE.PREVIEW})` : "none")};
     }
 `;

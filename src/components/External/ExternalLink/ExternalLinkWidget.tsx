@@ -19,8 +19,9 @@
 import React, { useContext, useEffect, useState } from "react";
 import { DiagramEngine } from "@projectstorm/react-diagrams";
 import { ExternalLinkModel } from "./ExternalLinkModel";
-import { Colors, EXTERNAL_LINK, LINK_WIDTH } from "../../../resources";
+import { EXTERNAL_LINK, LINK_WIDTH } from "../../../resources";
 import { DiagramContext } from "../../DiagramContext/DiagramContext";
+import { useColors } from "../../../theme";
 
 interface WidgetProps {
     engine: DiagramEngine;
@@ -29,6 +30,7 @@ interface WidgetProps {
 
 export function ExternalLinkWidget(props: WidgetProps) {
     const { link } = props;
+    const colors = useColors();
 
     const [isSelected, setIsSelected] = useState<boolean>(false);
     const { previewMode } = useContext(DiagramContext);
@@ -66,14 +68,14 @@ export function ExternalLinkWidget(props: WidgetProps) {
                     viewBox="0 0 6 6"
                     orient="auto"
                 >
-                    <polygon points="0,6 0,0 5,3" fill={isSelected ? Colors.SECONDARY : Colors.OUTLINE}></polygon>
+                    <polygon points="0,6 0,0 5,3" fill={isSelected ? colors.SECONDARY : colors.OUTLINE}></polygon>
                 </marker>
             </defs>
             <path
                 id={link.getID()}
                 d={link.withRightOffset ? link.getCurvePathWithOffset() : link.getCurvePath()}
                 fill={"none"}
-                stroke={isSelected ? Colors.SECONDARY : Colors.OUTLINE}
+                stroke={isSelected ? colors.SECONDARY : colors.OUTLINE}
                 strokeWidth={previewMode ? LINK_WIDTH.PREVIEW : LINK_WIDTH.DEFAULT}
                 markerEnd={"url(#" + link.getLinkArrowId() + ")"}
             />

@@ -19,8 +19,9 @@
 import React, { useEffect, useState } from "react";
 import { DiagramEngine } from "@projectstorm/react-diagrams";
 import { ProjectLinkModel } from "./ProjectLinkModel";
-import { Colors, PROJECT_LINK } from "../../../resources";
+import { PROJECT_LINK } from "../../../resources";
 import { SharedLink } from "../../SharedLink/SharedLink";
+import { useColors } from "../../../theme";
 
 interface WidgetProps {
     engine: DiagramEngine;
@@ -29,6 +30,7 @@ interface WidgetProps {
 
 export function ProjectLinkWidget(props: WidgetProps) {
     const { link } = props;
+    const colors = useColors();
 
     const [isSelected, setIsSelected] = useState<boolean>(false);
 
@@ -66,10 +68,10 @@ export function ProjectLinkWidget(props: WidgetProps) {
 
     const strokeColor = () => {
         if (isSelected) {
-            return Colors.SECONDARY;
+            return colors.SECONDARY;
         }
 
-        return Colors.ON_SURFACE_VARIANT;
+        return colors.ON_SURFACE_VARIANT;
     };
 
     // const midPoint = link.getMidPoint();

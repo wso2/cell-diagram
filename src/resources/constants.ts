@@ -17,27 +17,18 @@
  */
 
 
-export enum Colors {    
-    PRIMARY = '#5567D5',
-    ON_PRIMARY = '#FFF',
-    PRIMARY_CONTAINER = '#F0F1FB',
-    
-    SECONDARY = '#ffaf4d',
-    ON_SECONDARY = '#FFF',
-    SECONDARY_CONTAINER = '#fffaf2', 
-    
-    SURFACE_BRIGHT = '#FFF',
-    SURFACE = '#F7F8FB',
-    SURFACE_DIM = '#CBCEDB',
-    SURFACE_CONTAINER = "#cfd1f3",
-    ON_SURFACE = '#000',
-    ON_SURFACE_VARIANT = '#40404B',
+/**
+ * Light-theme palette retained as a value export for callers that import
+ * `Colors` directly. The `<CellDiagram>` component now resolves colors at
+ * runtime through the theme provider — see `../theme/colors.ts` and
+ * `../theme/CellDiagramThemeProvider.tsx`. Importing this object continues
+ * to work but is *not* theme-aware; new code should consume `useColors()`
+ * or `({ theme }) => theme.colors.X` inside `styled` template literals.
+ */
+import { CellDiagramColors, lightColors } from '../theme/colors';
 
-    OUTLINE = '#393939',
-    OUTLINE_VARIANT = '#808080',
-
-    ERROR = '#ED2633',
-}
+export const Colors: CellDiagramColors = lightColors;
+export type Colors = CellDiagramColors;
 
 export const LINK_WIDTH = {
     DEFAULT: 2,

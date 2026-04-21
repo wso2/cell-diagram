@@ -25,7 +25,7 @@ import { ProjectModel } from "./ProjectModel";
 import { ProjectHeadWidget } from "./ProjectHeadWidget/ProjectHeadWidget";
 import { ProjectName, ProjectNode } from "./styles";
 import { DiagramContext } from "../../DiagramContext/DiagramContext";
-import { Colors } from "../../../resources";
+import { useColors } from "../../../theme";
 
 interface ProjectWidgetProps {
     node: ProjectModel;
@@ -34,6 +34,7 @@ interface ProjectWidgetProps {
 
 export function ProjectWidget(props: ProjectWidgetProps) {
     const { node, engine } = props;
+    const colors = useColors();
     const { selectedNodeId, focusedNodeId, componentMenu, onComponentDoubleClick } = useContext(DiagramContext);
     const [isHovered, setIsHovered] = useState<boolean>(false);
     const headPorts = useRef<PortModel[]>([]);
@@ -94,7 +95,7 @@ export function ProjectWidget(props: ProjectWidgetProps) {
                 <Box sx={{ position: 'absolute', top: '26px', padding: '8px', cursor: 'pointer' }} onClick={handleOnWidgetDoubleClick}>
                     <Fade in={isHovered} timeout={350}>
                         <Tooltip title="View Project" placement="bottom" enterNextDelay={1000}>
-                            <OpenInNewRoundedIcon sx={{ color: Colors.OUTLINE_VARIANT, fontSize: 20 }} />
+                            <OpenInNewRoundedIcon sx={{ color: colors.OUTLINE_VARIANT, fontSize: 20 }} />
                         </Tooltip>
                     </Fade>
                 </Box>

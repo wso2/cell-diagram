@@ -18,7 +18,6 @@
 
 import React from "react";
 import styled from "@emotion/styled";
-import { Colors } from "../../resources";
 import { Observations } from "../../types";
 import { useDiagramContext } from "../DiagramContext/DiagramContext";
 
@@ -45,7 +44,7 @@ const TopTableHeader = styled(TableHeader)`
 
 const TableData = styled.td`
     padding: 2px 2px 2px 8px;
-    color: ${Colors.PRIMARY};
+    color: ${({ theme }) => theme.colors.PRIMARY};
     text-align: right;
     font-family: "GilmerRegular";
 `;

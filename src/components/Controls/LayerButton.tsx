@@ -18,7 +18,6 @@
 
 import React from "react";
 import styled from "@emotion/styled";
-import { Colors } from "../../resources";
 import { ReactNode } from "react";
 import { Tooltip } from "@mui/material";
 
@@ -34,22 +33,22 @@ const Button = styled.div<ButtonProps>`
     justify-content: space-between;
     font-size: 12px;
     cursor: ${(props) => (props.clickable ? "pointer" : "not-allowed")};
-    color: ${(props) => (props.selected ? Colors.PRIMARY : Colors.ON_SURFACE_VARIANT)};
+    color: ${({ theme, selected }) => (selected ? theme.colors.PRIMARY : theme.colors.ON_SURFACE_VARIANT)};
     user-select: none;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
     div {
-        border: 1px solid ${(props) => (props.selected ? Colors.PRIMARY : Colors.SURFACE_DIM)};
-        background-color: ${Colors.SURFACE};
-        color: ${(props) => (props.selected ? Colors.PRIMARY : Colors.OUTLINE_VARIANT)};
+        border: 1px solid ${({ theme, selected }) => (selected ? theme.colors.PRIMARY : theme.colors.SURFACE_DIM)};
+        background-color: ${({ theme }) => theme.colors.SURFACE};
+        color: ${({ theme, selected }) => (selected ? theme.colors.PRIMARY : theme.colors.OUTLINE_VARIANT)};
     }
     &:hover {
-        color: ${Colors.PRIMARY};
+        color: ${({ theme }) => theme.colors.PRIMARY};
     }
     &:hover div {
-        border: 1px solid ${Colors.PRIMARY};
-        color: ${Colors.PRIMARY};
+        border: 1px solid ${({ theme }) => theme.colors.PRIMARY};
+        color: ${({ theme }) => theme.colors.PRIMARY};
     }
 `;
 

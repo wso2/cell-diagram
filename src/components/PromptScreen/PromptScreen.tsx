@@ -18,7 +18,6 @@
 
 import React from "react";
 import styled from "@emotion/styled";
-import { Colors } from "../../resources";
 
 const Container = styled.div`
     display: flex;
@@ -27,13 +26,13 @@ const Container = styled.div`
     justify-content: center;
     height: 100%;
     width: 100%;
-    background-image: radial-gradient(${Colors.SURFACE_CONTAINER} 10%, transparent 0px);
+    background-image: radial-gradient(${({ theme }) => theme.colors.SURFACE_CONTAINER} 10%, transparent 0px);
     background-size: 16px 16px;
-    background-color: ${Colors.SURFACE_BRIGHT};
+    background-color: ${({ theme }) => theme.colors.SURFACE_BRIGHT};
 `;
 
 const MassageBox = styled.h3`
-    color: ${Colors.ON_SURFACE_VARIANT};
+    color: ${({ theme }) => theme.colors.ON_SURFACE_VARIANT};
     font-family: GilmerRegular;
     font-size: 16px;
     padding: 10px;

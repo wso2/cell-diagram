@@ -23,9 +23,16 @@ import "./resources/assets/font/fonts.css";
 import { ProjectDiagram } from "./diagrams/ProjectDiagram";
 import { PromptScreen } from "./components";
 import { OrgDiagram } from "./diagrams/OrgDiagram";
+import {
+    CellDiagramColors,
+    CellDiagramThemeMode,
+    CellDiagramThemeProvider,
+} from "./theme";
 
 export { DiagramLayer } from "./types";
 export type { MoreVertMenuItem, Project } from "./types";
+export type { CellDiagramColors, CellDiagramThemeMode } from "./theme";
+export { lightColors, darkColors } from "./theme";
 
 export interface CellDiagramProps {
     organization?: Organization;
@@ -35,23 +42,35 @@ export interface CellDiagramProps {
     animation?: boolean;
     defaultDiagramLayer?: DiagramLayer;
     customTooltips?: CustomTooltips;
-    modelVersion?: string; 
+    modelVersion?: string;
     previewMode?: boolean;
     onComponentDoubleClick?: (componentId: string) => void;
+    /**
+     * Color scheme to render the diagram in. Defaults to `'light'` so
+     * existing callers see no visual change.
+     */
+    mode?: CellDiagramThemeMode;
+    /**
+     * Optional per-token overrides merged on top of the `mode` preset. Use
+     * this to snap the diagram to a host application's brand palette.
+     */
+    colors?: Partial<CellDiagramColors>;
 }
 
 export function CellDiagram(props: CellDiagramProps) {
-    const { organization, project, previewMode } = props;
+    const { organization, project, previewMode, mode, colors } = props;
 
     return (
-        <Container className={previewMode ? "preview-mode" : ""}>
-            {organization ? (
-                <OrgDiagram organization={organization} {...props} />
-            ) : project ? (
-                <ProjectDiagram project={project} {...props} previewMode={previewMode} />
-            ) : (
-                <PromptScreen userMessage={"Organization or Project model not provided."} />
-            )}
-        </Container>
+        <CellDiagramThemeProvider mode={mode} colors={colors}>
+            <Container className={previewMode ? "preview-mode" : ""}>
+                {organization ? (
+                    <OrgDiagram organization={organization} {...props} />
+                ) : project ? (
+                    <ProjectDiagram project={project} {...props} previewMode={previewMode} />
+                ) : (
+                    <PromptScreen userMessage={"Organization or Project model not provided."} />
+                )}
+            </Container>
+        </CellDiagramThemeProvider>
     );
 }
