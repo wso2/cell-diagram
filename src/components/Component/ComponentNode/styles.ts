@@ -92,7 +92,7 @@ export const ComponentName = styled.span<ComponentNameStyleProps>`
     text-overflow: ellipsis;
     text-align: center;
     max-width: ${LABEL_MAX_WIDTH}px;
-    color: ${({ theme, disabled }) => (disabled ? theme.colors.SURFACE_DIM : theme.colors.OUTLINE)};
+    color: ${({ theme, disabled }) => (disabled ? theme.colors.SURFACE_DIM : theme.colors.ON_SURFACE_VARIANT)};
 `;
 
 interface IconWrapperStyleProps {

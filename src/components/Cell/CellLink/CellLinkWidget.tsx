@@ -151,7 +151,7 @@ export function CellLinkWidget(props: WidgetProps) {
             return "transparent";
         }
 
-        return colors.ON_SURFACE_VARIANT;
+        return colors.OUTLINE;
     };
 
     const strokeDash = () => {

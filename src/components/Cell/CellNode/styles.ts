@@ -141,7 +141,7 @@ export const PortLabel: React.FC<any> = styled.div`
     flex-direction: column;
     align-items: flex-start;
     font-family: "GilmerMedium";
-    color: ${({ theme }) => theme.colors.OUTLINE};
+    color: ${({ theme }) => theme.colors.ON_SURFACE_VARIANT};
     font-size: 20px;
     span {
         text-align: left;
@@ -180,14 +180,14 @@ export const BottomPortLabel: React.FC<any> = styled(PortLabel)`
 export const IconWrapper: React.FC<any> = styled.div`
     height: 32px;
     width: 32px;
-    color: ${({ theme }) => theme.colors.OUTLINE};
+    color: ${({ theme }) => theme.colors.ON_SURFACE_VARIANT};
     font-size: 28px;
 `;
 
 export const TopIconWrapper: React.FC<any> = styled.div`
     height: 32px;
     width: 32px;
-    color: ${({ theme }) => theme.colors.OUTLINE};
+    color: ${({ theme }) => theme.colors.ON_SURFACE_VARIANT};
     font-size: 28px;
     transform: rotate(90deg);
 `;
