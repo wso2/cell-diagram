@@ -16,7 +16,7 @@
  * under the License.
  */
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import { DiagramEngine, DiagramModel } from "@projectstorm/react-diagrams";
 import { CanvasWidget } from "@projectstorm/react-canvas-core";
 import CircularProgress from "@mui/material/CircularProgress";
@@ -73,7 +73,8 @@ export function OrgDiagram(props: OrgDiagramProps) {
         };
     }, [props]);
 
-    useEffect(() => {
+    // layout effect: apply reveal classes before first paint to avoid a flash of the final state
+    useLayoutEffect(() => {
         if (diagramEngine && animation && isDiagramLoaded) {
             animateOrgDiagram();
             diagramEngine.repaintCanvas();
