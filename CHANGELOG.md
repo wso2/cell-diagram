@@ -1,5 +1,11 @@
 # @wso2/cell-diagram
 
+## 0.3.2
+
+### Patch Changes
+
+- c74f817: Replace the `gsap` dependency with CSS keyframe animations for the diagram reveal and the canvas control panels, and apply reveal classes before first paint to avoid flicker.
+
 ## 0.3.1
 
 ### Patch Changes
