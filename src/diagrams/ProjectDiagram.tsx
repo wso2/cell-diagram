@@ -16,7 +16,7 @@
  * under the License.
  */
 
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { DiagramEngine, DiagramModel } from "@projectstorm/react-diagrams";
 import { CanvasWidget } from "@projectstorm/react-canvas-core";
 import {
@@ -94,7 +94,8 @@ export function ProjectDiagram(props: ProjectDiagramProps) {
         };
     }, [props]);
 
-    useEffect(() => {
+    // layout effect: apply reveal classes before first paint to avoid a flash of the final state
+    useLayoutEffect(() => {
         if (diagramEngine && animation && isDiagramLoaded) {
             animateProjectDiagram();
             diagramEngine.repaintCanvas();

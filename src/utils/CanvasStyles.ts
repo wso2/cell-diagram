@@ -20,6 +20,7 @@ import { createStyles, makeStyles } from "@material-ui/core/styles";
 import styled from "@emotion/styled";
 
 import { MAIN_CELL } from "../resources";
+import { revealStyles } from "./animations";
 
 /**
  * Structural styles for the SVG canvas wrapper. Kept on MUI v4 `makeStyles`
@@ -69,6 +70,7 @@ export const DiagramContainer = styled.div`
     svg:not(:root) {
         overflow: visible;
     }
+    ${revealStyles}
     [data-nodeid="${MAIN_CELL}"] {
         pointer-events: none;
     }
